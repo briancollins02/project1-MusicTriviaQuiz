@@ -9,23 +9,39 @@
 <body>
     <!-- header -->
     <header>
-    <h1>
-        Lyric Quiz
-    </h1>
-    <h2>
-        Prove yourself the best music fan of them all!
-    </h2>
+        <h1>
+            80's Music Lyric Quiz
+        </h1>
+        <h2>
+            We'll show you some lyrics, and you guess the song or artist!
+        </h2>
     </header>
-    <!-- main section -->
-    <form>
-        <select id="music-scope" name="category" placeholder="category">
-            <option value="" disabled selected>Select a format...</option>
-            <option value="artist">Artist</option>
-            <option value="genre">Genre</option>
-            <option value="decades">Decade</option>
-        </select>
-        <input id="category-name" type="text" placeholder="artist/decade/genre name">
-        <button type="submit" value="submit">Start!</button>
-    </form>
+    <!-- card -->
+    <div>
+        
+        <p>🔥 Current Streak: <span id="high-score-display"><!-- High-score will be displayed here --></span></p>
+        <!-- button that directs to the quiz.html page -->
+        <a id="start button" href="quiz.html">Start!</a>
+    </div>
+    <!-- credits at footer -->
+    <footer>
+        <h3>Credits</h3>
+        <div class="credit-name" id="person1">
+            <h4>person1</h4>
+            <a href="#">link</a>
+        </div>
+        <div class="credit-name" id="person2">
+            <h4>person2</h4>
+            <a href="#">link</a>
+        </div>
+        <div class="credit-name" id="person3">
+            <h4>person3</h4>
+            <a href="#">link</a>
+        </div>
+        <div class="credit-name" id="person4">
+            <h4>person4</h4>
+            <a href="#">link</a>
+        </div>
+    </footer>
 </body>
 </html>
