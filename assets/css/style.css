@@ -1,0 +1,41 @@
+body {
+    background-color: black;
+    color: #f76c6c;
+}
+
+h1 {
+    background-color: #20345e;
+    font-size: 100px;
+    text-align: center;
+    border: 5px palevioletred;
+    border-style: groove;
+    padding: 30px purple;
+    margin: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+#start-button {
+    color: aliceblue;
+    text-align: center;
+    display: block;
+    font-size: 50px;
+
+}
+
+footer {
+
+    background-color: #20345e;
+    font-size: 10px;
+    text-align: center;
+    border: 5px palevioletred;
+    border-style: groove;
+    padding: 30px purple;
+    margin: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
