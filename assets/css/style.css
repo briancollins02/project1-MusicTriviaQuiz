@@ -18,17 +18,24 @@ h2 {
 }
 
 #start-button {
+    background-color: #f76c6c;
     color: aliceblue;
     text-align: center;
     display: block;
     font-size: 50px;
+    border: 15px white;
+    border-style: groove;
+    padding: 30px 15px;
+    text-decoration: double;
+
 
 }
 
 footer {
 
     background-color: #20345e;
-    font-size: 10px;
+    font-size: 20px;
+    display: inline-flex;
     text-align: center;
     border: 5px palevioletred;
     border-style: groove;
