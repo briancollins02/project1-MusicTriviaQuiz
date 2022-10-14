@@ -1,0 +1,10 @@
+body {
+    background-color: black;
+    color: blue;
+    font-size: 30px;
+    text-align: center;
+    border: 10px aqua;
+    border-style: groove;
+    padding: 40px #ab90af;
+    margin: 20px;
+}
