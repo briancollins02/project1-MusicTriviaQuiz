@@ -1,10 +1,11 @@
 body {
     background-color: black;
-    color: blue;
+    color: #f76c6c;
     font-size: 30px;
     text-align: center;
-    border: 10px aqua;
+    border: 20px palevioletred;
     border-style: groove;
-    padding: 40px #ab90af;
+    padding: 20px purple;
     margin: 20px;
 }
+

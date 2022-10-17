@@ -6,15 +6,19 @@ body {
 h1 {
     background-color: #20345e;
     font-size: 100px;
+    outline: Black solid 4px;
     text-align: center;
     border: 5px palevioletred;
     border-style: groove;
     padding: 30px purple;
     margin: 50px;
+    box-shadow: 20px 15px 15px rgb(212, 57, 57);
+    
 }
 
 h2 {
     text-align: center;
+    
 }
 
 #start-button {
@@ -45,5 +49,7 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
+    width: 93%;
+    /*changed width to 93% from 100%*/
+
 }
