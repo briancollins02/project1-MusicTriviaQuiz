@@ -9,3 +9,11 @@ body {
     margin: 20px;
 }
 
+.flash-green {
+    animation: flashGreen 2s ease-out;
+}
+
+@keyframes flashGreen {
+    from {box-shadow: 0px 0px 10px green;}
+    to {box-shadow: none}
+}
