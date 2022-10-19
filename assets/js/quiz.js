@@ -1,9 +1,17 @@
 const questionEl = document.getElementById('question-render');
 const pointsEl = document.getElementById('ui-question-progress');
 const quizLengthEl = document.getElementById('total-questions');
-const highScoreEl = document.getElementById('high-scoreEl');
 const container = document.getElementById('container')
-// console.log("connected")
+const songTitleEl = document.getElementById("title-render")
+
+var arraySelection;
+
+// get the entire tracklist from local-storage and assign it to song_list
+var questions = JSON.parse(localStorage.getItem('song_list'));
+console.log('quiz song list', questions)
+var startLength = questions.length;
+console.log('total songs in playlist', startLength)
+console.log("connected")
 
 // function myFunction() {
 //     console.log("button pressed")
@@ -19,42 +27,42 @@ var canAnswer = false;
 var savedHighScore = JSON.parse(localStorage.getItem('high-score')) || 0;
 var scoreDisplay = savedHighScore.pointTotal
 
-console.log(savedHighScore)
-console.log(scoreDisplay)
-
 console.log('old high-score',scoreDisplay)
 
 
 var score = 0;
 var currentQuestion;
-const questions = [
-    {
-        q: 'placeholder question',
-        choices: ['placeholder answer'],
-        answer: ' '
-    },
-]
+
 
 // Total numer of Questions
-quizLengthEl.innerText = '/' + questions.length
+ quizLengthEl.innerText = '/' + questions.length + ' songs';
 
 
 // start out at -1 so get question gets us to index: 0
-var arraySelection = -1
+
 
 // Go to next question
 function getQuestion() {
     // enable answering
     canAnswer = true;
+
+    // remove last question from array if not the first question
+    if (arraySelection != null){
+        console.log('removed song ', questions[arraySelection].track.name + 'by ' + questions[arraySelection].track.artists[0].name)
+        questions.splice(arraySelection, 1);
+    }
     //check if there are any more questions
  
-    if (arraySelection > questions.length-2) {
+    if (questions.length < 1) {
         endGame();
     }
+
     // go to next question
-    arraySelection++
+    arraySelection = Math.floor(Math.random(0)*questions.length) -1;
+    songTitleEl.textContent = questions[arraySelection].track.name;
+    console.log('question select', arraySelection +' , ' + questions[arraySelection].track.name + ' by ' + questions[arraySelection].track.artists[0].name + '. there are ' + questions.length + ' songs left.')
     var currentQuestion = questions[arraySelection];
-    questionEl.textContent = currentQuestion.q;
+    // questionEl.textContent = currentQuestion.q;
     // choiceA.textContent = currentQuestion.choices[0];
     // choiceB.textContent = currentQuestion.choices[1];
     // choiceC.textContent = currentQuestion.choices[2];
@@ -62,35 +70,31 @@ function getQuestion() {
 }
 
 // check button selection and add score
-document.querySelectorAll('button').forEach(occurence => {
-        occurence.addEventListener('click', (e) => {
-            if (canAnswer == true) {
-                let elementId = e.target.id;
-                console.log(canAnswer)
-                if (elementId !== '') {
-                    if (elementId == questions[arraySelection].answer){
-                        score++
-                        pointsEl.textContent = score + ' correct/' + questions.length;
-                        correct();
-                    } else {
-                        timeLeft -=5;
-                        incorrect()
-                    }
-                }
-            } else { //stop the function from working while canAnswer=false
-                return
+function checkAnswer(){
+    userGuess = document.getElementById('user-text').value;
+    console.log('guess',userGuess);
+        if (canAnswer == true) {
+            if (userGuess == questions[arraySelection].track.artists[0].name){
+                score++
+                // pointsEl.textContent = score + ' correct/' + questions.length;
+                console.log('correct');
+                correct();
+            } else {           
+                console.log('incorrect');
+                incorrect()
             }
-            //TODO insert a function that plays a confirmation animation
-            //wait for user feedback to play and then move to the next question
-        setTimeout(getQuestion, 250); 
-    })
-})
+        } else { //stop the function from working while canAnswer=false
+            return
+        }
+        //TODO insert a function that plays a confirmation animation
+        //wait for user feedback to play and then move to the next question
+    setTimeout(getQuestion, 250); 
+}
 
 //correct and incorrect user feedback
 function correct() {
         canAnswer = false;
         container.classList.add('flash-green');
-        console.log ("Button Pressed")
     // setTimeout(function() {
     //     pointsEl.classList.remove('flash-green');
     // },2000)
