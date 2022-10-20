@@ -8,36 +8,46 @@
     <link rel="stylesheet" href="./assets/css/quiz.css">
 </head>
 <body>
-    <header>
-        <h1>Guess the artist!</h1>
-    </header>
-   <!-- <input type = "button" onclick="myFunction()" value = "click me"> -->
-    <!-- div holds the main content -->
-    <div id="container">
-        <!-- div: current answer streak counter -->
-        <div id="points">points 🔥</div>
-        <div id="total-questions"></div>
-        <!-- this section holds both wraps. will initially show the question wrap, 
-            and then show the answer-wrap after the user makes a guess -->
-        <section>
-            <!-- a wrap that contains the lyrics and user-input box -->
+    <div id="wrap">
+        
+    <!-- <input type = "button" onclick="myFunction()" value = "click me"> -->
+        <!-- div holds the main content -->
+        <div id="container" class="show">
+
             <div id="question-wrap">
-                <h2 id="title-render">
-                    [song-title]
-                </h2>
-                <div id="user-form">
-                    <input id="user-text" type="text" placeholder="artist name">
-                    <button id="user-submit" type="button" onclick="checkAnswer()">Submit</button>
-                </div>
+                <header>
+                    <h1>Guess the artist!</h1>
+                </header>
+                <!-- div: current answer streak counter -->
+                <div id="points"><span id="pointsEl"></span> songs 🔥</div>
+                <div id="total-questions"></div>
+                <!-- this section holds both wraps. will initially show the question wrap, 
+                    and then show the answer-wrap after the user makes a guess -->
+                <section>
+                    <!-- a wrap that contains the lyrics and user-input box -->
+                    <div id="question-wrap">
+                        <h2 id="title-render">
+                            [song-title]
+                        </h2>
+                        <div>
+                            <p id="answer-status"></p>
+                        </div>
+                        <form id="user-form" onsubmit="return false">
+                            <input id="user-text" type="text" placeholder="artist name" autocomplete = 'off'>
+                            <button id="user-submit" type="submit" onclick="checkAnswer()">ok</button>
+                        </form>
+                    </div>
+                </section>
             </div>
-            <!-- div: a wrap that contains the spotify player and next-question button
-                It will be displayed after the user submits their guess -->
-            <!-- <div id="answer-wrap">
-                <h2 id="song-information">[song title & artist name]</h2>
-                <div id="spotify player">[this div will hold the music player]</div>
-                <button id="btn-next-song">Next Song</button>
-            </div> -->
-        </section>
+        </div>
+        <div id="answer-wrap" class="hide">
+            <div id="end-container">
+                <h3>Nope, not quite...</h3>
+                <p id="reveal"></p>
+                <div><span id="streak reveal"> 5 in a row</span></div>
+                <button id="btn-next-song">Home</button>
+            </div>
+        </div>
     </div>
     <script src="./assets/js/quiz.js"></script>
 </body>

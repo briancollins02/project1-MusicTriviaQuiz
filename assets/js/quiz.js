@@ -1,8 +1,9 @@
 const questionEl = document.getElementById('question-render');
-const pointsEl = document.getElementById('ui-question-progress');
-const quizLengthEl = document.getElementById('total-questions');
+const pointsEl = document.getElementById('pointsEl');
 const container = document.getElementById('container')
-const songTitleEl = document.getElementById("title-render")
+const songTitleEl = document.getElementById("title-render");
+const answerStatus = document.getElementById('answer-status');
+const answerReveal = document.getElementById('reveal');
 
 var arraySelection;
 
@@ -31,11 +32,11 @@ console.log('old high-score',scoreDisplay)
 
 
 var score = 0;
+pointsEl.textContent = score + ' correct / ' + questions.length;
 var currentQuestion;
 
 
 // Total numer of Questions
- quizLengthEl.innerText = '/' + questions.length + ' songs';
 
 
 // start out at -1 so get question gets us to index: 0
@@ -45,7 +46,8 @@ var currentQuestion;
 function getQuestion() {
     // enable answering
     canAnswer = true;
-
+    document.getElementById('user-text').value = "";
+    answerStatus.textContent = ''
     // remove last question from array if not the first question
     if (arraySelection != null){
         console.log('removed song ', questions[arraySelection].track.name + 'by ' + questions[arraySelection].track.artists[0].name)
@@ -59,14 +61,9 @@ function getQuestion() {
 
     // go to next question
     arraySelection = Math.floor(Math.random(0)*questions.length) -1;
-    songTitleEl.textContent = questions[arraySelection].track.name;
+    songTitleEl.textContent = '"' + questions[arraySelection].track.name + '"';
     console.log('question select', arraySelection +' , ' + questions[arraySelection].track.name + ' by ' + questions[arraySelection].track.artists[0].name + '. there are ' + questions.length + ' songs left.')
     var currentQuestion = questions[arraySelection];
-    // questionEl.textContent = currentQuestion.q;
-    // choiceA.textContent = currentQuestion.choices[0];
-    // choiceB.textContent = currentQuestion.choices[1];
-    // choiceC.textContent = currentQuestion.choices[2];
-    // choiceD.textContent = currentQuestion.choices[3];
 }
 
 // check button selection and add score
@@ -76,7 +73,7 @@ function checkAnswer(){
         if (canAnswer == true) {
             if (userGuess == questions[arraySelection].track.artists[0].name){
                 score++
-                // pointsEl.textContent = score + ' correct/' + questions.length;
+                pointsEl.textContent = score + ' correct/ ' + questions.length;
                 console.log('correct');
                 correct();
             } else {           
@@ -88,51 +85,39 @@ function checkAnswer(){
         }
         //TODO insert a function that plays a confirmation animation
         //wait for user feedback to play and then move to the next question
-    setTimeout(getQuestion, 250); 
+    setTimeout(getQuestion, 2000); 
 }
 
 //correct and incorrect user feedback
 function correct() {
         canAnswer = false;
-        container.classList.add('flash-green');
-    // setTimeout(function() {
-    //     pointsEl.classList.remove('flash-green');
-    // },2000)
+        answerStatus.classList.add('flash-green');
+        answerStatus.textContent = 'Correct!'
+     setTimeout(function() {
+        answerStatus.classList.remove('flash-green');
+    },2000)
 }
 
 function incorrect() {
-        canAnswer = false;
-        container.classList.add('flash-red');
-    // setTimeout(function() {
-    //     timerEl.classList.remove('flash-red');
-    // },2000)
+    canAnswer = false;
+    document.getElementById('wrap').classList.add('flash-red');
+    setTimeout(function() {
+        document.getElementById('wrap').classList.remove('flash-red');
+        endGame();
+    },2000)
 }
 
 
 
 // end game if time up or out of questions
 function endGame() {
-    endScore.textContent = score;
-    totalQuestions.textContent = questions.length;
-    console.log('scoreDisplay',scoreDisplay);
-    document.getElementById('end-screen').classList.add('show');
-    document.getElementById('end-screen').classList.remove('hide');
-    console.log('current score', score)
-    if (scoreDisplay === undefined || score > savedHighScore.pointTotal) {
-        console.log(savedHighScore.pointTotal)
-        console.log('new high-score!')
-        //Show High Score submission form
-        document.getElementById('form').classList.add('show')
-        document.getElementById('form').classList.remove('hide')
-    } else {
-        highScoreEl.textContent = 'The current High-Score is ' + scoreDisplay + ' by ' + savedHighScore.initials;
-        document.getElementById('back-button').classList.add('show')
-        document.getElementById('back-button').classList.remove('hide')
-    }
-    
-
-   
-
+    console.log('no')
+    document.getElementById('answer-wrap').classList.remove('hide');
+    document.getElementById('answer-wrap').classList.add('show');
+    document.getElementById('container').classList.remove('show');
+    document.getElementById('container').classList.add('hide');
+    // endScore.textContent = score;
+    // totalQuestions.textContent = questions.length;
 }
 
 // End Screen Functionality

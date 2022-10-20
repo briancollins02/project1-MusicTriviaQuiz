@@ -1,4 +1,4 @@
-var redirect_uri = 'http://127.0.0.1:5501/OAuth/index.html'
+var redirect_uri = 'http://127.0.0.1:5500/spotify.html'
 
 var client_id;
 var client_secret;

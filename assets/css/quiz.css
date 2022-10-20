@@ -1,19 +1,119 @@
 body {
-    background-color: black;
-    color: #f76c6c;
-    font-size: 30px;
-    text-align: center;
-    border: 20px palevioletred;
-    border-style: groove;
-    padding: 20px purple;
-    margin: 20px;
+    font-size: 26px;
+    background-color: #202124;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button, input{
+    border-radius: 2rem;
+    width: 10rem;
+    height: 2rem;
+    font-size: 20px;
+}
+
+input::placeholder, input {
+    text-align:center !important;
+}
+
+.hide {
+    display: none;
+    animation: hide 2s ease;
+}
+
+.show {
+    display: show;
+    animation: show 2s ease;
 }
 
 .flash-green {
     animation: flashGreen 2s ease-out;
 }
 
+.flash-red {
+    animation: flashRed 4s ease-out;
+}
+
+#container {
+    color: #679f39;
+    border: 20px #679f39;
+    background-color: rgba(30, 193, 30, 10%);
+    border-style: groove;
+    height: 30rem;
+    width: 40rem;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 3rem;
+}
+
+#question-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+
+#user-form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
+    margin: auto;
+}
+
+#answer-status {
+    height: 1rem;
+}
+
+#wrap {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+#answer-wrap {
+    color: #679f39;
+    border: 20px #679f39;
+    background-color: rgba(30, 193, 30, 10%);
+    border-style: groove;
+    height: 30rem;
+    width: 40rem;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 3rem;
+}
+
+#end-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%
+}
+
+
+
+
+
 @keyframes flashGreen {
-    from {box-shadow: 0px 0px 10px green;}
-    to {box-shadow: none}
+    from {color: rgba(30, 193, 30, 100);}
+    to {color: rgba(30, 193, 30, 0);}
+}
+
+@keyframes flashRed {
+    from {background-color: rgba(218, 35, 35, 100);}
+    to {background-color: rgba(218, 35, 35, 0);}
+}
+
+@keyframes show {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes hide {
+    from {opacity: 100%;}
+    to {opacity: 0%;}
 }
