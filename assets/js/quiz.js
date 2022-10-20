@@ -4,6 +4,7 @@ const container = document.getElementById('container')
 const songTitleEl = document.getElementById("title-render");
 const answerStatus = document.getElementById('answer-status');
 const answerReveal = document.getElementById('reveal');
+const streakRender = document.getElementById('streak-render')
 
 var arraySelection;
 
@@ -100,9 +101,9 @@ function correct() {
 
 function incorrect() {
     canAnswer = false;
-    document.getElementById('wrap').classList.add('flash-red');
+    document.getElementById('container').classList.add('flash-red');
     setTimeout(function() {
-        document.getElementById('wrap').classList.remove('flash-red');
+        document.getElementById('container').classList.remove('flash-red');
         endGame();
     },2000)
 }
@@ -116,6 +117,8 @@ function endGame() {
     document.getElementById('answer-wrap').classList.add('show');
     document.getElementById('container').classList.remove('show');
     document.getElementById('container').classList.add('hide');
+    answerReveal.textContent = questions[arraySelection].track.name + ' is actually by ' + questions[arraySelection].track.artists[0].name; 
+    streakRender.textContent = 'You got an answer streak of ' + score;
     // endScore.textContent = score;
     // totalQuestions.textContent = questions.length;
 }
