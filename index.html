@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>80's Music Lyrics Quiz</title>
-    <link rel="stylesheet" href="./assets/css/index.css">
+    <title>Spotify API Demo</title>
 </head>
 <body>
-    <!-- header -->
-    <header>
-        <h1>
-            80's Music Lyrics Quiz
-        </h1>
-        <h2>
-            We'll show you some lyrics, and you guess the song or artist!
-        </h2>
-    </header>
-    <!-- card -->
-    <div>
-        
-        <p>🔥 Current Streak: <span id="high-score-display"><!-- High-score will be displayed here --></span></p>
-        <!-- button that directs to the quiz.html page -->
-        <a id="start-button" href="quiz.html">Start!</a>
-    </div>    
+    <h1>spotify API</h1>
+    <p id="api-render">API data</p>
+    <input type="text" id="clientId" placeholder="Client ID">
+    <input type="text" id="clientSecret" placeholder="Client Secret">
+    <input type="button" onclick="requestAuthorization()" value="Request Authorization">
+
+    <div id="playlistSection">
+        <div>
+            <label for="playlists">Playlists</label>
+            <select id="playlists"></select>
+            <input type="button" onclick="refreshPlaylists()" value="Refresh Playlists">
+        </div>
+    </div>
+    <div id="trackSection">
+        <div>
+            <label for="tracks">Tracks</label>
+            <select id="tracks"></select>
+            <input type="button" onclick="fetchTracks()" value="Fetch Tracks">
+        </div>
+    </div>
+    <a href="quiz.html">Go to Game</a>
+    <script src="./assets/js/spotify.js"></script>
 </body>
 </html>
