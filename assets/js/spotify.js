@@ -1,4 +1,4 @@
-var redirect_uri = 'http://127.0.0.1:5500/spotify.html'
+var redirect_uri = 'https://briancollins02.github.io/project1-MusicTriviaQuiz/'
 
 var client_id;
 var client_secret;
